@@ -16,11 +16,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-var cfgFile string
-
 type Config struct {
 	Url string `yaml:"url"`
 }
+
+var cfgFile string
 
 var rootCmd = &cobra.Command{
 	Use:   "go-cli",
@@ -37,13 +37,14 @@ to quickly create a Cobra application.`,
 }
 
 func Execute() {
-	cfg, err := loadConfig()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(cfg.Url)
+	// cfg, err := loadConfig()
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Println(cfg.Url)
 
-	if err := rootCmd.Execute(); err != nil {
+	err := rootCmd.Execute()
+	if err != nil {
 		os.Exit(1)
 	}
 }
@@ -78,21 +79,22 @@ func initConfig() {
 
 	viper.AutomaticEnv()
 
-	if err := viper.ReadInConfig(); err == nil {
+	err := viper.ReadInConfig()
+	if err == nil {
 		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
 	}
 }
 
 // 設定ファイル情報を取得
 // 不要かもしれない
-func loadConfig() (*Config, error) {
-	// viperの設定を呼び出し
-	initConfig()
+// func loadConfig() (*Config, error) {
+// 	// viperの設定を呼び出し
+// 	initConfig()
 
-	var cfg Config
-	if err := viper.Unmarshal(&cfg); err != nil {
-		return nil, err
-	}
+// 	var cfg Config
+// 	if err := viper.Unmarshal(&cfg); err != nil {
+// 		return nil, err
+// 	}
 
-	return &cfg, nil
-}
+// 	return &cfg, nil
+// }
