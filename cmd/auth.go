@@ -11,6 +11,7 @@ package cmd
 import (
 	"fmt"
 	lib_viper "go-cli/lib"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -29,15 +30,27 @@ func authYamlMapping() *Authentication {
 
 var authCmd = &cobra.Command{
 	Use:   "auth",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Set up credentials.",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) == 0 {
+			fmt.Println("help called")
+			os.Exit(0)
+		}
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("auth called")
+		switch args[0] {
+		case "list":
+			fmt.Println("list called")
+		case "add":
+			fmt.Println("add called")
+		case "update":
+			fmt.Println("update called")
+		case "remove":
+			fmt.Println("remove called")
+		default:
+			fmt.Println("help called")
+		}
+
+		return nil
 	},
 }
 
