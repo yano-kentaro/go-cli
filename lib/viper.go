@@ -41,3 +41,17 @@ func LoadConfFile(
 	}
 }
 
+// 構造体にファイルデータをマッピングする関数
+func Unmarshal[T any](
+	fileName string,
+	fileType string,
+) *T {
+	var ret *T
+	err := viper.Unmarshal(&ret)
+	if err != nil {
+		errMsg := "Failed to unmarshal " + fileName + "." + fileType
+		fmt.Println(errMsg)
+		os.Exit(0)
+	}
+	return ret
+}
