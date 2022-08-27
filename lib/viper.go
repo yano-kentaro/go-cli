@@ -45,8 +45,8 @@ func LoadConfFile(
 func Unmarshal[T any](
 	fileName string,
 	fileType string,
-) *T {
-	var ret *T
+) T {
+	var ret T
 	err := viper.Unmarshal(&ret)
 	if err != nil {
 		errMsg := "Failed to unmarshal " + fileName + "." + fileType
