@@ -15,3 +15,12 @@ import (
 	"github.com/spf13/viper"
 )
 
+// "./auth.yaml"のデータをマッピングする構造体
+type Authentication struct {
+	User []struct {
+		Name     string
+		ApiKey   string
+		ApiToken string
+	}
+}
+
