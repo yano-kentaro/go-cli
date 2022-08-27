@@ -24,3 +24,20 @@ type Authentication struct {
 	}
 }
 
+// ファイルを読み込む関数
+func LoadConfFile(
+	fileName string,
+	fileType string,
+	filePath string,
+) {
+	viper.SetConfigName(fileName)
+	viper.SetConfigType(fileType)
+	viper.AddConfigPath(filePath)
+	err := viper.ReadInConfig()
+	if err != nil {
+		errMsg := "Failed to load " + fileName + "." + fileType
+		fmt.Println(errMsg)
+		os.Exit(0)
+	}
+}
+
