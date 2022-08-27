@@ -17,6 +17,16 @@ import (
 
 type Authentication lib_viper.Authentication
 
+// 構造体に"./auth.yaml"のデータをマッピングする関数
+func authYamlMapping() *Authentication {
+	// 認証情報ファイルの指定
+	filePath := os.Getenv("HOME")
+	lib_viper.LoadConfFile(".auth", "yaml", filePath)
+
+	// 構造体にマッピング
+	return lib_viper.Unmarshal[Authentication](".auth", "yaml")
+}
+
 var authCmd = &cobra.Command{
 	Use:   "auth",
 	Short: "A brief description of your command",
@@ -32,6 +42,8 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
+	authData := authYamlMapping()
+	fmt.Println(authData)
 	rootCmd.AddCommand(authCmd)
 
 	// Here you will define your flags and configuration settings.
