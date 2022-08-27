@@ -10,11 +10,13 @@ package cmd
 
 import (
 	"fmt"
+	lib_viper "go-cli/lib"
 
 	"github.com/spf13/cobra"
 )
 
-// authCmd represents the auth command
+type Authentication lib_viper.Authentication
+
 var authCmd = &cobra.Command{
 	Use:   "auth",
 	Short: "A brief description of your command",
