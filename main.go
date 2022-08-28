@@ -8,7 +8,14 @@
 
 package main
 
-import "go-cli/cmd"
+import (
+	"fmt"
+	"go-cli/cmd"
+)
+
+func init() {
+	fmt.Println("main.go init")
+}
 
 func main() {
 	cmd.Execute()

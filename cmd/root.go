@@ -50,6 +50,7 @@ func Execute() {
 }
 
 func init() {
+	fmt.Println("root.go init")
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().StringVar(
@@ -71,8 +72,8 @@ func initConfig() {
 	if cfgFile != "" {
 		viper.SetConfigFile(cfgFile)
 	} else {
-		home := os.Getenv("HOME")
-		viper.AddConfigPath(home)
+		filePath := os.Getenv("HOME") + "/data"
+		viper.AddConfigPath(filePath)
 		viper.SetConfigType("yaml")
 		viper.SetConfigName(".go-cli")
 	}
