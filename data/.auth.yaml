@@ -3,3 +3,4 @@ user:
   - name: ken
     apikey: test_key
     apitoken: test_token
+    default: true

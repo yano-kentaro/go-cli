@@ -21,6 +21,7 @@ type Authentication struct {
 		Name     string
 		ApiKey   string
 		ApiToken string
+		Default  bool
 	}
 }
 

@@ -30,6 +30,8 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
+	fmt.Println(AuthData)
+	fmt.Println("accounts.go init")
 	rootCmd.AddCommand(accountsCmd)
 
 	// Here you will define your flags and configuration settings.

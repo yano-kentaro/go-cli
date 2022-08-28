@@ -30,6 +30,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
+	fmt.Println("apps.go init")
 	rootCmd.AddCommand(appsCmd)
 
 	// Here you will define your flags and configuration settings.

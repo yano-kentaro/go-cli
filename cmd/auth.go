@@ -23,7 +23,7 @@ var AuthData Authentication
 // 構造体に"./auth.yaml"のデータをマッピングする関数
 func authYamlMapping() Authentication {
 	// 認証情報ファイルの指定
-	filePath := os.Getenv("HOME")
+	filePath := os.Getenv("HOME") + "/data"
 	lib_viper.LoadConfFile(".auth", "yaml", filePath)
 
 	// 構造体にマッピング
@@ -57,6 +57,7 @@ var authCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("auth.go init")
 	AuthData = authYamlMapping()
 	fmt.Println(AuthData)
 	rootCmd.AddCommand(authCmd)
